@@ -39,20 +39,24 @@ body{
     text-decoration: none;
     color: #2c3e50;
     font-weight: 500;
-    transition: color 0.3 ease;
+
 }
 .nav-links a:hover{
     color: #3498db;
+    transition: color 0.2s ease;
 }
 .burger{
     display: none;
     cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    width: 30px;
 }
 .burger div{
-    width: 100vh;
     height: 3px;
+    width: 100%;
     background-color: #2c3e50;
-    margin: 5px;
     transition: all 0.3s ease;
 }
 .hero{
@@ -242,6 +246,7 @@ body{
 }
 .submit-btn:hover{
     background-color: #2988b9;
+    cursor: pointer;
 }
 .social-links{
     margin: 4rem;
@@ -300,6 +305,49 @@ footer{
     margin: 1rem;
 }
 
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 1rem 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    color: #3498db;
+    transition: color 0.2s ease;
+}
+
+/* Show sidebar when active */
+.sidebar.active {
+    left: 0;
+}
+
 /* Media Query for Tablets */
 @media (max-width: 1024px) {
     .navbar {
@@ -309,8 +357,23 @@ footer{
         flex-direction: row;
         align-items: center;
     }
+    .hero {
+        flex-direction: column;
+        padding: 2rem;
+    }
     .hero-content {
         padding: 3rem;
+        text-align: center;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
     }
     .about-content,
     .project-grid {
@@ -321,21 +384,21 @@ footer{
 
 /* Media Query for Mobile */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: row;
-        text-align: center;
-    }
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-        display: none; /* Hidden by default for mobile */
-    }
     .burger {
-        display: block;
+        display: flex;
     }
+
+    .nav-links {
+        display: none;
+    }
+
     .hero {
         flex-direction: column;
+        padding: 1.5rem;
+    }
+    .hero-content {
         padding: 2rem;
+        text-align: center;
     }
     .hero-content:hover{
         transform: none;
@@ -348,8 +411,8 @@ footer{
         font-size: 1rem;
     }
     .cta-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
     }
     .about-content {
         padding: 1rem;
