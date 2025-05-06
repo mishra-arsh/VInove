@@ -37,9 +37,22 @@ document.addEventListener("DOMContentLoaded", function() {
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
+        let loader = document.querySelector('.loader');
+        let submitBtn = document.querySelector('.submit-btn');
 
-        console.log('Form Submitted:' , {name, email, message});
-        alert("Thank you for your message! Will get back to you soon...");
+        loader.style.display = 'block';
+        loader.classList.add('rotate'); // Add rotation class
+        submitBtn.style.display = 'none';
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            alert("Form Submitted Successfully!");
+            loader.style.display = 'none';
+            loader.classList.remove('rotate'); // Remove rotation class
+            submitBtn.style.display = 'block';
+            submitBtn.disabled = false;
+        }, 3000);
+
         contactForm.reset();
     });
 });
@@ -96,3 +109,12 @@ function toggleSidebar() {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('active');
 }
+
+
+
+// const education = document.querySelector('.educations');
+// console.dir(education);
+
+// const skillTags = document.querySelector('.skill-tags');
+// console.dir(skillTags);
+// console.log(skillTags.children);
