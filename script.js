@@ -118,3 +118,45 @@ function toggleSidebar() {
 // const skillTags = document.querySelector('.skill-tags');
 // console.dir(skillTags);
 // console.log(skillTags.children);
+
+
+const contactForm = document.getElementById('contact-form'),
+contactName = document.getElementById('name'),
+contactEmail = document.getElementById('email'),
+
+contactMessage = document.getElementById('message'),
+errorMessage = document.getElementById('error-message');
+
+const sendEmail = (e) => {
+    e.preventDefault();
+
+    // Check if the fields have values
+    if (contactName.value === '' || contactEmail.value === '' || contactMessage.value === '') {
+        errorMessage.textContent = 'Write all the input fields';
+        errorMessage.style.color = 'red'; // Set error message color
+        errorMessage.style.display = 'block'; // Ensure the message is visible
+    } else {
+        emailjs.sendForm('service_7bxwz7h', 'template_i8criwq', '#contact-form', 'xKECJ8SPVHDJP7CVc').then(() => {
+            errorMessage.classList.add('color-first');
+            errorMessage.textContent = 'Message Sent Successfully';
+            errorMessage.style.color = 'green'; // Set success message color
+            errorMessage.style.display = 'block'; // Ensure the message is visible
+
+            setTimeout(() => {
+                errorMessage.textContent = '';
+                errorMessage.style.display = 'none'; // Hide the message after 5 seconds
+            }, 5000);
+        },
+        (error) => {
+            alert('OOPs! SOMETHING WENT WRONG...', error);
+        });
+
+        // Clear the form fields
+        contactName.value = '';
+        contactEmail.value = '';
+        contactSubject.value = '';
+        contactMessage.value = '';
+    }
+};
+
+contactForm.addEventListener('submit', sendEmail);

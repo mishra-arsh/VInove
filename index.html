@@ -126,6 +126,10 @@
                 </div>
                 <button class="submit-btn" type="submit">Send Message</button>
                 <div class="loader"></div>
+                <div id="error-message">
+                    <p class="success-message" style="display: none; color: green;">Message sent successfully!</p>
+                </div>
+                <div id="error-message" style="display: none;"></div>
             </form>
             
             
@@ -144,6 +148,10 @@
             &copy;This is my portfolio and don't copy...plzz
         </p>
     </footer>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      emailjs.init('xKECJ8SPVHDJP7CVc'); 
+    </script>
     <script src="./script.js"></script>   
 </body>
 
